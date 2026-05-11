@@ -1,0 +1,8 @@
+example_gene_1_3ttr:43:example_miR_1:22:-32.1:0.000013:6:U       A              U: GC AUAC AACCUACUACCUCA : UG UAUG UUGGAUGAUGGAGU :U  A                    
+example_gene_1_3ttr:43:example_miR_1:22:-13.2:0.999973:30:    U    UG A   A      :     UGCA  C UGC       :     AUGU  G AUG       :UUGAU    UG     AUGGAGU
+example_gene_2_3ttr:43:example_miR_1:22:-18.9:0.160832:3:        U         A  A :         ACCUACUGC CU  :         UGGAUGAUG GA  :UUGAUAUGU            GU
+example_gene_2_3ttr:43:example_miR_1:22:-12.0:1.000000:21:C   U       CGG AA     C: ACU   UAACC   G  AUUUC : UGA   GUUGG   U  UGGAG :U   UAU     A   GA     U
+example_gene_1_3ttr:43:example_miR_2:23:-20.2:0.077014:19:A           UU      G   : CUACCU CAUU    GCAU    : GAUGGA GUGA    CGUG    :       C    UAUU    AAAU
+example_gene_1_3ttr:43:example_miR_2:23:-12.8:1.000000:2: A        A            :  AUUUGCAU             :  UGGACGUG             :GA        AUAUUCGUGAAAU
+example_gene_1_3ttr:43:example_miR_2:23:-11.8:1.000000:35:     N                 :      GCAU     GCAU    :      CGUG     CGUG    :GAUGGA    AUAUU    AAAU
+example_gene_2_3ttr:43:example_miR_2:23:-36.9:0.000001:2:U    UAC                  A: UACC   UGCACUAUAAGCACUUUA : AUGG   ACGUGAUAUUCGUGAAAU :G                          

@@ -1,0 +1,70 @@
+sRNA Target Predictor — Third-Party Software Notices
+======================================================
+
+This portable distribution bundles unmodified or path-patched copies of the
+following third-party software. Each component retains its own upstream
+license; this NOTICE just enumerates them. See each bundled_tools/<tool>/
+README.txt for component-specific build details and SHA256.
+
+
+1. miRanda 3.3a (aug2010 release)
+----------------------------------
+   Authors:    Anton Enright, Bino John, Chris Sander, Debora Marks
+   Upstream:   Memorial Sloan-Kettering Cancer Center (cbio.mskcc.org;
+               the official domain is now offline — source obtained from
+               http://ftp.genek.cn:8888/Share/linux_software/miRanda-aug2010.tar.gz)
+   License:    GNU General Public License (GPL). See the miRanda source tarball
+               for the full license text. Academic and personal use granted;
+               commercial use requires verifying upstream terms.
+
+
+2. RNAhybrid 2.1.2
+-------------------
+   Authors:    Marc Rehmsmeier, Peter Steffen, et al.
+   Upstream:   Bielefeld University, https://bibiserv.cebitec.uni-bielefeld.de/
+               applications/rnahybrid (Source obtained from TUNA Ubuntu mirror.)
+   License:    GPL (see upstream COPYING).
+
+
+3. PITA (pita_prediction.pl)
+-----------------------------
+   Authors:    Kertesz M, et al., Weizmann Institute of Science
+   Upstream:   http://genie.weizmann.ac.il/pubs/mir07/
+   Notice:     This bundle contains pita_prediction.pl and supporting Perl
+               libraries with absolute Linux paths (/home/data/t150541/mirna/
+               lib/) rewritten as relative "lib/" paths so the script can run
+               on Windows. No algorithmic changes were made.
+   License:    Academic / research use (see upstream site for current terms).
+
+
+4. ViennaRNA 2.6.4 (RNAduplex.exe only)
+----------------------------------------
+   Authors:    Ronny Lorenz, Stephan H. Bernhart, Ivo L. Hofacker, et al.
+   Upstream:   https://www.tbi.univie.ac.at/RNA/
+   Build:      Cross-compiled with mingw-w64 posix variant from upstream source
+               2.6.4 tarball, statically linked. Patches: none.
+   License:    TBI Vienna ViennaRNA license. See upstream COPYING.
+
+
+5. Strawberry Perl 5.42.2.1 (portable)
+---------------------------------------
+   Upstream:   https://strawberryperl.com/ (binary obtained from
+               https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases)
+   Notice:     This bundle strips the upstream `c/` (mingw toolchain) and
+               `vendor/` (third-party CPAN modules) directories to keep
+               total size manageable. Only the Perl interpreter + standard
+               library are retained.
+   License:    Artistic License + GNU GPL (Perl's dual license).
+               See perl/licenses/ in the upstream release for the full text.
+
+
+6. sRNA Target Predictor (this wrapper)
+----------------------------------------
+   Author:     (your name) <your.email@example.com>
+   License:    (project license — fill in)
+   Source:     (project URL)
+
+
+Reporting issues: any defect in this portable bundle is most likely a
+packaging issue with the wrapper; please report it to the wrapper authors
+rather than to each upstream project.

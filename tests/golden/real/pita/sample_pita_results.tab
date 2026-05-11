@@ -1,0 +1,3 @@
+UTR	microRNA	Start	End	Seed	Loop	dGduplex	dG5	dG3	dG0	dG1	dGopen	ddG
+example_gene_2_3utr	example_miR_2	27	19	8:0:0	0	-30.7	-10	-20.7	-8.59	-5.96	-2.62	-28.07
+example_gene_1_3utr	example_miR_1	27	19	8:0:0	0	-26.5	-13.2	-13.3	-5.81	-3.60	-2.21	-24.28

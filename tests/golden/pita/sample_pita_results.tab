@@ -1,0 +1,6 @@
+# PITA sample results
+RefSeq	microRNA	Position(s)	ddG	dGduplex	Extra
+NM_001	hsa-miR-1	105-126	-7.25	-21.5	kept
+
+NM_002	hsa-miR-2	300..319	-5.5	-18.2	kept
+NM_003	hsa-miR-3	start 450 end 472	-9.75	-25.75	kept

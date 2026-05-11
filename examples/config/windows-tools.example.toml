@@ -1,0 +1,23 @@
+# Example tool configuration for srna-win-target.
+# Pass with `--config windows-tools.example.toml`.
+# Any [section] you omit means that tool will be skipped on the run
+# (unless you supply its CLI flag instead).
+
+[miranda]
+exe = "bundled_tools/miranda/miranda.exe"
+score_cutoff = 140
+energy_cutoff = -20
+# strict = true   # add -strict to the miRanda command (5'-seed strict)
+
+[rnahybrid]
+exe = "bundled_tools/rnahybrid/RNAhybrid.exe"
+energy_cutoff = -20
+pvalue_cutoff = 0.1
+# set = "3utr_human"   # background frequencies set; check `RNAhybrid -h`
+
+[pita]
+perl = "perl"
+script = "bundled_tools/pita/pita_prediction.pl"
+
+# [intarna]
+# exe = "bundled_tools/intarna/IntaRNA.exe"

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>sRNA Target Predictor</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-text">
+        <h1>sRNA <span class="accent">Target Predictor</span></h1>
+        <span class="brand-sub">miRanda · RNAhybrid · PITA — 三工具集成预测</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Tool readiness banner ─────────────────────────────────────── -->
+    <section class="card hero">
+      <div id="status-line" class="status-line loading">
+        <span class="status-dot"></span>
+        <span class="status-text">正在检测内置工具…</span>
+      </div>
+      <div id="tool-badges" class="tool-badges" aria-live="polite"></div>
+    </section>
+
+    <!-- ── Idle pane: three inputs + big Run ─────────────────────────── -->
+    <section id="setup-pane" class="card">
+      <h2>输入 · Inputs</h2>
+      <div class="input-stack">
+        <label class="input-row">
+          <span class="input-label">miRNA FASTA</span>
+          <div class="input-control">
+            <input id="mirna" type="text" placeholder="C:\path\to\mirna.fa" autocomplete="off" />
+            <button class="browse" type="button"
+                    data-target="mirna" data-mode="file"
+                    data-filetypes="fasta"
+                    data-title="选择 miRNA FASTA">选择</button>
+          </div>
+        </label>
+        <label class="input-row">
+          <span class="input-label">Targets FASTA</span>
+          <div class="input-control">
+            <input id="targets" type="text" placeholder="C:\path\to\targets.fa" autocomplete="off" />
+            <button class="browse" type="button"
+                    data-target="targets" data-mode="file"
+                    data-filetypes="fasta"
+                    data-title="选择 Targets FASTA">选择</button>
+          </div>
+        </label>
+        <label class="input-row">
+          <span class="input-label">Output folder</span>
+          <div class="input-control">
+            <input id="out" type="text" placeholder="C:\Users\...\Desktop\srna-target-results" autocomplete="off" />
+            <button class="browse" type="button"
+                    data-target="out" data-mode="dir"
+                    data-title="选择输出文件夹">选择</button>
+          </div>
+        </label>
+      </div>
+
+      <div class="run-row">
+        <button id="run" class="cta" type="button">开始预测 · Run</button>
+        <button id="example-btn" class="example" type="button">一键跑示例数据</button>
+      </div>
+
+      <!-- ── Advanced collapsed ─────────────────────────────────────── -->
+      <details id="advanced" class="advanced">
+        <summary>高级设置 · Advanced</summary>
+        <div class="advanced-body">
+
+          <h3 class="adv-h">工具参数 · Tool parameters</h3>
+
+          <div class="tool" data-tool="miranda">
+            <div class="tool-head">
+              <label class="tool-toggle"><input type="checkbox" class="enable" checked /> <strong>miRanda</strong></label>
+              <span class="tool-state" data-state-for="miranda"></span>
+            </div>
+            <div class="path-row" data-path-for="miranda" hidden>
+              <input type="text" class="exe" placeholder="path to miranda(.exe)" />
+              <button class="browse" type="button"
+                      data-target="miranda-exe" data-mode="file"
+                      data-title="选择 miRanda 可执行文件">选择</button>
+            </div>
+            <div class="params">
+              <label>最低比对分 <small>(≥ 140 推荐)</small>
+                <input type="number" data-key="score_cutoff" value="140" /></label>
+              <label>最低结合能 <small>kcal/mol (≤ -20 推荐)</small>
+                <input type="number" step="0.1" data-key="energy_cutoff" value="-20" /></label>
+              <label class="check-inline"><input type="checkbox" data-key="strict" />
+                seed 严格互补 <small>(2-8 nt 全配对)</small></label>
+            </div>
+          </div>
+
+          <div class="tool" data-tool="rnahybrid">
+            <div class="tool-head">
+              <label class="tool-toggle"><input type="checkbox" class="enable" checked /> <strong>RNAhybrid</strong></label>
+              <span class="tool-state" data-state-for="rnahybrid"></span>
+            </div>
+            <div class="path-row" data-path-for="rnahybrid" hidden>
+              <input type="text" class="exe" placeholder="path to RNAhybrid(.exe)" />
+              <button class="browse" type="button"
+                      data-target="rnahybrid-exe" data-mode="file"
+                      data-title="选择 RNAhybrid 可执行文件">选择</button>
+            </div>
+            <div class="params">
+              <label>最低 MFE <small>kcal/mol (≤ -20 推荐)</small>
+                <input type="number" step="0.1" data-key="energy_cutoff" value="-20" /></label>
+              <label>p 值上限 <small>(≤ 0.1 推荐)</small>
+                <input type="number" step="0.001" data-key="pvalue_cutoff" value="0.1" /></label>
+              <label>背景分布 <small>3utr_human / 3utr_worm / 3utr_fly</small>
+                <input type="text" data-key="set" value="3utr_human" /></label>
+            </div>
+          </div>
+
+          <div class="tool" data-tool="pita">
+            <div class="tool-head">
+              <label class="tool-toggle"><input type="checkbox" class="enable" checked /> <strong>PITA</strong></label>
+              <span class="tool-state" data-state-for="pita"></span>
+            </div>
+            <div class="path-row" data-path-for="pita" hidden>
+              <input type="text" class="exe" placeholder="path to pita_prediction.pl" />
+              <button class="browse" type="button"
+                      data-target="pita-exe" data-mode="file"
+                      data-title="选择 pita_prediction.pl">选择</button>
+            </div>
+            <div class="params">
+              <label>Perl 解释器 <small>(留空 = 用 bundled Strawberry Perl)</small>
+                <input type="text" data-key="perl" value="" placeholder="auto" /></label>
+            </div>
+          </div>
+
+          <h3 class="adv-h">性能 · Performance</h3>
+          <div class="adv-grid">
+            <label class="field">
+              <span>并行进程数 <small>(默认 4，与 CPU 核数相当)</small></span>
+              <input id="workers" type="number" value="4" min="1" max="64" />
+            </label>
+            <label class="field">
+              <span>Target 拆批大小 <small>条 / 批</small></span>
+              <input id="chunk" type="number" value="500" min="1" />
+            </label>
+            <label class="field">
+              <span>miRNA 拆批大小 <small>(0 = 整文件一次)</small></span>
+              <input id="mirna_chunk" type="number" value="0" min="0" />
+            </label>
+            <label class="field">
+              <span>运行后端 <small>local = 本机 .exe；wsl = 调 Linux</small></span>
+              <select id="backend">
+                <option value="local">local</option>
+                <option value="wsl">wsl</option>
+                <option value="docker" disabled>docker (planned)</option>
+              </select>
+            </label>
+            <label class="field check">
+              <input id="resume" type="checkbox" checked />
+              <span>重跑跳过 <small>同输入/同参数的分块复用上次结果（不是真正的暂停-恢复）</small></span>
+            </label>
+          </div>
+
+        </div>
+      </details>
+    </section>
+
+    <!-- ── Run pane: progress + log + result actions ────────────────── -->
+    <section id="run-pane" class="card run-pane hidden">
+      <div class="run-pane-head">
+        <span id="run-state-text" class="run-state-text">预测中…</span>
+        <button id="cancel" class="ghost" type="button" disabled>取消</button>
+      </div>
+      <progress id="progress" value="0" max="100"></progress>
+      <pre id="log" class="log"></pre>
+      <div id="result-row" class="result-row hidden">
+        <a id="report" class="result-btn primary hidden" target="_blank" rel="noopener">打开预测报告</a>
+        <a id="download" class="result-btn" download>下载 merged.csv</a>
+        <button id="open-folder" class="result-btn" type="button">打开输出文件夹</button>
+        <button id="reset" class="result-btn ghost" type="button">重跑一次</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>local-only · binds 127.0.0.1 · FastAPI + WebSocket</span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

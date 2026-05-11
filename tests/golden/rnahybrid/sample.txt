@@ -1,0 +1,5 @@
+NM_001:1200:hsa-miR-1:22:-24.5:0.012:105:ACGUACGU:||||||||:UGCAUGCA:||||||||
+
+too:short:line
+NM_002:900:hsa-miR-2:21:-20.0:0.05:300:GGCAUU:||||||:CCGUAA:||||||
+NM_003:1500:hsa-miR-3:23:-28.75:0.001:450:UUUACGA:|||||||:AAAUGCU:|||||||

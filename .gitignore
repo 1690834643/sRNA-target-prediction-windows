@@ -1,0 +1,40 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Build artefacts
+build/
+dist/
+*.spec.bak
+
+# Runtime / generated
+results/
+srna_target_results/
+*.log
+work/
+
+# Bundled binaries (shipped as Release assets, not committed to git)
+bundled_tools/miranda/*.exe
+bundled_tools/rnahybrid/*.exe
+bundled_tools/pita/*.exe
+bundled_tools/pita/default.par
+bundled_tools/pita/perl/
+bundled_tools/pita/bin/
+bundled_tools/pita/tmp_seqfile*
+bundled_tools/intarna/
+
+# Release zips — distributed via GitHub Releases
+srna-win-target-portable.zip
+srna-win-target-portable.zip.sha256
+*.tar.gz
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
